@@ -1,5 +1,6 @@
+
 # SIC-Assembler
-SIC-Assembler(Python) is the tool to convert SIC program(HL) to machine code which is understood by SIC. This project is an implementation of SIC Assembler. What it basically does is take a SIC program and translates it into a object code which is intended for the the SIC to understand.
+The project is a simulation to the assembler of the SIC hypothetical machine. This project is an implementation of SIC Assembler. What it basically does is take a SIC program and translates it into a object code which is intended for the the SIC to understand.
 
 
 #--Run pass1  to obtain  --#
@@ -12,3 +13,6 @@ SIC-Assembler(Python) is the tool to convert SIC program(HL) to machine code whi
 #-Team   --#
 bara'a alsaeed 
 leyan zahdah# sic-assembler
+
+
+
