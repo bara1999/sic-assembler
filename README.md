@@ -10,7 +10,7 @@ The project is a simulation to the assembler of the SIC hypothetical machine.  W
 
 ## Team  
 bara'a alsaeed 
-leyan zahdah# sic-assembler
+leyan zahdah
 
 
 
