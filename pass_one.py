@@ -49,7 +49,7 @@ for i in inp.readlines():
    
     n = i
     string=n[40:70]#to remove comments
-    if (n[9:15].strip()!='End'):
+    if (n[11:19].strip()!='End'):
         if n[0]!='.':
             if len(string) == 0:
 
@@ -123,6 +123,7 @@ for i in inp.readlines():
 inp.close()
 out.close()
 symtab.close()
+
 
 lastaddress=LOCCTR
 programLength = int(lastaddress,16) - start
