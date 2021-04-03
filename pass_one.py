@@ -38,10 +38,10 @@ LOCCTR=0
 #READING FIRST LINE
 first = inp.readline()
 if first[11:20].strip() == "START":
-        LOCCTR =first[21:39].strip()
+        LOCCTR =first[21:38].strip()
         start =int(LOCCTR,16)
         PN=first[0:10].strip()
-        out.write(LOCCTR+" "*6+first[0:39])
+        out.write(LOCCTR+" "*6+first[0:38])
 else:
     LOCCTR=0
 
@@ -55,7 +55,7 @@ for i in inp.readlines():
 
                out.write(LOCCTR+" "*6+n)
             else:
-                out.write(LOCCTR+" "*6+n[0:39]+"\n")
+                out.write(LOCCTR+" "*6+n[0:38]+"\n")
 
             if n[0:10].strip()!="":
                 if n[0:10].strip() in sym:
@@ -70,15 +70,15 @@ for i in inp.readlines():
             if n[11:19].strip() in optab.keys() or n[11:19].strip()=="WORD":
               LOCCTR = str(hex(int(LOCCTR,16)+(3)))[2:]
             elif n[11:19].strip()=="RESW":
-              temp = int(n[21:39].strip())
+              temp = int(n[21:38].strip())
               LOCCTR = str(hex(int(LOCCTR,16)+(temp)*3))[2:]
             elif n[11:19].strip()=="RESB":
-              LOCCTR = str(hex(int(LOCCTR,16)+int(n[21:39].strip())))[2:]
+              LOCCTR = str(hex(int(LOCCTR,16)+int(n[21:38].strip())))[2:]
             elif n[11:19].strip()=="BYTE":
-              if n[21:39].strip()[0]=="X":
-                LOCCTR = str(hex(int(LOCCTR,16)+int((len(n[21:39].strip())-3)/2)))[2:]
-              elif n[21:39].strip()[0]=="C":
-                LOCCTR = str(hex(int(LOCCTR,16)+int((len(n[21:39].strip())-3))))[2:]
+              if n[21:38].strip()[0]=="X":
+                LOCCTR = str(hex(int(LOCCTR,16)+int((len(n[21:38].strip())-3)/2)))[2:]
+              elif n[21:38].strip()[0]=="C":
+                LOCCTR = str(hex(int(LOCCTR,16)+int((len(n[21:38].strip())-3))))[2:]
         
             elif n[11:19].strip()=="LTORG":
                 for i in littab:
