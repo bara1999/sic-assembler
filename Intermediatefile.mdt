@@ -1,7 +1,7 @@
 1000      COPY       START     1000 
-1000      FIRST      STL       RETADR            
+1000      FIRST      STL       RETADR           
 1003      CLOOP      JSUB      RDREC
-1006                 LDA       LENGTH            
+1006                 LDA       LENGTH           
 1009                 COMP      ZERO
 100c                 JEQ       ENDFIL
 100f                 JSUB      RDREC
