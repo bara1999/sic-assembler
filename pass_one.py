@@ -6,7 +6,11 @@ out = open("Intermediatefile.mdt","w")
 #SYMBOLTAB
 symtab = open("SymbolTab.txt","w");
 sym = {}
+error=[]
 littab = {}
+
+
+
 optab = {
     "ADD":"18",
     "AND":"40",
@@ -39,6 +43,7 @@ LOCCTR=0
 first = inp.readline()
 if first[11:20].strip() == "START":
         LOCCTR =first[21:38].strip()
+        start1 = LOCCTR    
         start =int(LOCCTR,16)
         PN=first[0:10].strip()
         out.write(LOCCTR+" "*6+first[0:38])
@@ -49,7 +54,7 @@ for i in inp.readlines():
    
     n = i
     string=n[40:70]#to remove comments
-    if (n[11:19].strip()!='End'):
+    if (n[11:20].strip()!='End'):
         if n[0]!='.':
             if len(string) == 0:
 
@@ -61,6 +66,8 @@ for i in inp.readlines():
                 if n[0:10].strip() in sym:
 
                     print("error:duplicate symbol : "+n[0:10].strip())
+                    error.append("error:duplicate symbol : "+n[0:10].strip())
+                    
                 else:
                     space=18-len(n[0:10].strip())
                     symtab.write(n[0:10].strip()+" "*space+LOCCTR+"\n")
@@ -90,6 +97,7 @@ for i in inp.readlines():
                     LOCCTR=str(hex(int(LOCCTR,16)+int(littab[i][0])))[2:]
                 littab={} 
             elif n[11:19].strip()=="END":
+                
                 out.write('\n')
                 if littab:
                      for i in littab:
@@ -101,6 +109,7 @@ for i in inp.readlines():
                         LOCCTR=str(hex(int(LOCCTR,16)+int(littab[i][0])))[2:]
             else:
                 print("error: invalid opcdce"+ n[11:19].strip())
+                error.append("error:duplicate symbol : "+n[0:10].strip())
                 break
 
 
@@ -118,12 +127,12 @@ for i in inp.readlines():
                         littab[literal]=[len(hexco)]
                 else:
                     print("ُERROR: NOT Valid Literal : "+literal) 
+                    error.append("error:duplicate symbol : "+n[0:10].strip())
     
                
 inp.close()
 out.close()
 symtab.close()
-
 
 lastaddress=LOCCTR
 programLength = int(lastaddress,16) - start
@@ -133,7 +142,9 @@ print("program name is : "+PN+"\n"+"pogram length: "+proglen+'\n')
 for i in sym:
     print(i+"  "+sym[i]+"\n")        
     
-    
+ 
+
+
 root =Tk()
 root.title("Sic assembler") 
 text1 = open("SymbolTab.txt").read()
