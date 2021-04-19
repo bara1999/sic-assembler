@@ -14,7 +14,7 @@
 1024                 JSUB      RDREC
 1027                 LDL       RETADR
 102a                 RSUB
-102d                 LTORG
+                     LTORG
 102d      *          =C'EOF'
 1030      *          =X'F1'
 1031      EOF        BYTE      C'EOF'
@@ -38,5 +38,5 @@
 2064      INPUT      BYTE      X'F1'
 2065                 RSUB
 2068                 RSUB
-206b                 END       FIRST
+                     END       FIRST
 206b      *          =X'F2'

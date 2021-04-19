@@ -54,13 +54,25 @@ for i in inp.readlines():
    
     n = i
     string=n[40:70]#to remove comments
-    if (n[11:20].strip()!='End'):
+    if (n[11:20].strip()!='END'):
+        print(n[11:20].strip())
         if n[0]!='.':
+            
+            
             if len(string) == 0:
+                if(n[11:20].strip() == "LTORG"): 
+                    out.write(" "*10+n)
 
-               out.write(LOCCTR+" "*6+n)
+                else:
+                   out.write(LOCCTR+" "*6+n)
+               
             else:
-                out.write(LOCCTR+" "*6+n[0:38]+"\n")
+                if(n[11:20].strip() == "LTORG"): 
+                    out.write(" "*10+n)
+
+                else:
+                    out.write(LOCCTR+" "*6+n[0:38]+"\n")
+                
 
             if n[0:10].strip()!="":
                 if n[0:10].strip() in sym:
@@ -96,21 +108,7 @@ for i in inp.readlines():
                     
                     LOCCTR=str(hex(int(LOCCTR,16)+int(littab[i][0])))[2:]
                 littab={} 
-            elif n[11:19].strip()=="END":
-                
-                out.write('\n')
-                if littab:
-                     for i in littab:
-                        space=18-len(i)
-                        out.write(LOCCTR+" "*6+"*"+" "*10+i+"\n")
-                        symtab.write(i+" "*space+LOCCTR+"\n")
-                        sym[i] = LOCCTR
-                    
-                        LOCCTR=str(hex(int(LOCCTR,16)+int(littab[i][0])))[2:]
-            else:
-                print("error: invalid opcdce"+ n[11:19].strip())
-                error.append("error:duplicate symbol : "+n[0:10].strip())
-                break
+         
 
 
             if n[21:22] == '=':
@@ -128,8 +126,23 @@ for i in inp.readlines():
                 else:
                     print("ُERROR: NOT Valid Literal : "+literal) 
                     error.append("error:duplicate symbol : "+n[0:10].strip())
+    else:
+        out.write(" "*10+n+'\n')
+        if littab:
+            for i in littab:
+                space=18-len(i)
+                out.write(LOCCTR+" "*6+"*"+" "*10+i+"\n")
+                symtab.write(i+" "*space+LOCCTR+"\n")
+                sym[i] = LOCCTR
+                    
+                LOCCTR=str(hex(int(LOCCTR,16)+int(littab[i][0])))[2:]
+        else:
+            print("error: invalid opcdce"+ n[11:19].strip())
+            error.append("error:duplicate symbol : "+n[0:10].strip())
+            break
+        
     
-               
+             
 inp.close()
 out.close()
 symtab.close()
