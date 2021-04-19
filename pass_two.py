@@ -130,11 +130,19 @@ while i<len(l):
 		tempaddr = str(int(addrlist[i],16)-int(addr,16) + int(3))
 		tempaddr1=hex(int(tempaddr))
 		taddr = tempaddr1[2:4]
+		if len(l[i])<=6:
+    			
+    		
+			
+			s=int((len(l[i]))/2)
+			taddr=str(s)
 		if len(taddr) == 1:
 			taddr= "0"+taddr
 		
+
 		objpgm.write(taddr.upper())
 		objpgm.seek(0,2)
+		
 		
 	i+=1
 
