@@ -85,9 +85,9 @@ for i in inp.readlines():
                     symtab.write(n[0:10].strip()+" "*space+LOCCTR+"\n")
                     
                     sym[n[0:10].strip()] = LOCCTR
-            
+                    
             if n[11:19].strip() in optab.keys() or n[11:19].strip()=="WORD":
-              LOCCTR = str(hex(int(LOCCTR,16)+(3)))[2:]
+              LOCCTR = str(hex(int(LOCCTR,16)+(3)))[2:] 
             elif n[11:19].strip()=="RESW":
               temp = int(n[21:38].strip())
               LOCCTR = str(hex(int(LOCCTR,16)+(temp)*3))[2:]
@@ -125,7 +125,7 @@ for i in inp.readlines():
                         littab[literal]=[len(hexco)]
                 else:
                     print("ُERROR: NOT Valid Literal : "+literal) 
-                    error.append("error:duplicate symbol : "+n[0:10].strip())
+                    error.append("ُERROR: NOT Valid Literal : "+literal)
     else:
         out.write(" "*10+n+'\n')
         if littab:
@@ -138,7 +138,7 @@ for i in inp.readlines():
                 LOCCTR=str(hex(int(LOCCTR,16)+int(littab[i][0])))[2:]
         else:
             print("error: invalid opcdce"+ n[11:19].strip())
-            error.append("error:duplicate symbol : "+n[0:10].strip())
+            error.append("error: invalid opcdce : "+ n[11:19].strip())
             break
         
     

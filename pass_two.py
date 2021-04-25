@@ -29,6 +29,8 @@ for i in inter.readlines():
     operand = ls[30:39].strip()
     if operand[-2:] == ",X":
         operand = operand[:-2]
+        sym[operand]=str(hex(int(sym[operand],16)+int('8000',16)))[2:]
+       
     if opcode=="START":
         listing.write(ls)
 
@@ -70,7 +72,7 @@ for i in inter.readlines():
                  
         
         elif opcode =="BYTE"  :
-            temp = operand[2:len(operand)-1]
+            temp = operand[2:len(operand)-1] 
             if operand[0]=="C":
                
                 f=""
@@ -117,11 +119,11 @@ while i<len(l):
 	addr = addrlist[i]
 	cont = 0
 	if l[i]!="":
-		objpgm.write("\nT^00"+addr.upper()+"^")
+		objpgm.write("\nT^00"+addr.upper()+"^")        
 		tell = objpgm.tell()
 		objpgm.write("  ")
 		j=i
-		while i<len(l) and l[i]!="" and cont<10 :
+		while i<len(l) and l[i]!="" and cont<10 : 
 			objpgm.write("^" + l[i].upper())
 			cont +=1
 			i+=1
@@ -131,16 +133,13 @@ while i<len(l):
 		tempaddr1=hex(int(tempaddr))
 		taddr = tempaddr1[2:4]
 		if len(l[i])<=6:
-    			
-    		
-			
 			s=int((len(l[i]))/2)
 			taddr=str(s)
 		if len(taddr) == 1:
 			taddr= "0"+taddr
 		
 
-		objpgm.write(taddr.upper())
+		objpgm.write(taddr.upper())  
 		objpgm.seek(0,2)
 		
 		
@@ -156,6 +155,7 @@ errorFile.close()
 objpgm.close()
 inter.close()
 symtab.close()
+
 		
 					
         

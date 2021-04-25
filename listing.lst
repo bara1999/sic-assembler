@@ -31,7 +31,7 @@
 204f                 RD        INPUT              D82064
 2052                 COMP      ZERO               281037
 2055                 JEQ       EXIT               302061
-2058                 STCH      BUFFER,X           541040
+2058                 STCH      BUFFER,X           549040
 205b                 TIX       LENGTH             2C103d
 205e                 JLT       RLOOP              382049
 2061      EXIT       STX       LENGTH             10103d
